@@ -15,21 +15,26 @@
                 <h1>ShopEasy</h1>
             </div>
             <div class="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#products" class="nav-link">Products</a>
-                <a href="#categories" class="nav-link">Categories</a>
+                <!-- Navigation menu items can go here -->
             </div>
             <div class="nav-actions">
-                                <div class="search-container">
+                <!-- Search Container -->
+                <div class="search-container">
                     <input type="text" id="searchInput" placeholder="Search products...">
-                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                    <button id="searchBtn" onclick="performSearch()">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
+                
+                <!-- Cart Container -->
                 <div class="cart-container">
                     <button id="cartBtn" class="cart-btn">
                         <i class="fas fa-shopping-cart"></i>
                         <span id="cartCount" class="cart-count">0</span>
                     </button>
                 </div>
+                
+                <!-- User Container -->
                 <div class="user-container">
                     <a href="login.html" class="login-link" title="Login">
                         <i class="fas fa-sign-in-alt"></i>

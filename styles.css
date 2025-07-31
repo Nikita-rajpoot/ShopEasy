@@ -2158,4 +2158,51 @@ body {
     margin-right: 0.5rem;
 }
 
+/* Search Container Mobile Responsive */
+@media (max-width: 768px) {
+    .search-container {
+        order: 3; /* Move search below other elements on mobile */
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    
+    #searchInput {
+        width: 100%;
+        max-width: 200px;
+        font-size: 0.9rem;
+    }
+    
+    #searchBtn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .nav-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    
+    .cart-container,
+    .user-container {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-container {
+        max-width: 150px;
+    }
+    
+    #searchInput {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    #searchBtn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+} 
+
  
