@@ -12,7 +12,15 @@
     <header class="header">
         <nav class="navbar">
             <div class="nav-brand">
-                <h1>ShopEasy</h1>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-shop">Shop</span>
+                        <span class="logo-easy">Easy</span>
+                    </div>
+                </div>
             </div>
             <div class="nav-menu">
                 <!-- Navigation menu items can go here -->
@@ -42,13 +50,95 @@
                     </button>
                 </div>
             </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <!-- Mobile Menu Button -->
+            <div class="mobile-menu-btn" onclick="toggleMobileSidebar()">
+                <i class="fas fa-bars"></i>
             </div>
         </nav>
     </header>
+
+    <!-- Mobile Sidebar -->
+    <div id="mobileSidebar" class="mobile-sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-user-info">
+                <img id="sidebarUserAvatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="User Avatar" class="sidebar-avatar">
+                <div class="sidebar-user-details">
+                    <h3 id="sidebarUserName">Demo User</h3>
+                    <p id="sidebarUserEmail">demo@shopeasy.com</p>
+                </div>
+            </div>
+            <button class="sidebar-close-btn" onclick="closeMobileSidebar()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-content">
+            <div class="sidebar-section">
+                <h4>Quick Actions</h4>
+                <div class="sidebar-menu">
+                    <a href="#" class="sidebar-menu-item" onclick="switchTab('dashboard')">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="sidebar-menu-item" onclick="switchTab('orders')">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>My Orders</span>
+                    </a>
+                    <a href="#" class="sidebar-menu-item" onclick="switchTab('wishlist')">
+                        <i class="fas fa-heart"></i>
+                        <span>Wishlist</span>
+                    </a>
+                    <a href="#" class="sidebar-menu-item" onclick="switchTab('addresses')">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Addresses</span>
+                    </a>
+                    <a href="#" class="sidebar-menu-item" onclick="switchTab('settings')">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h4>Account</h4>
+                <div class="sidebar-menu">
+                    <a href="#" class="sidebar-menu-item" onclick="editProfile()">
+                        <i class="fas fa-user-edit"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                    <a href="#" class="sidebar-menu-item" onclick="changeAvatar()">
+                        <i class="fas fa-camera"></i>
+                        <span>Change Avatar</span>
+                    </a>
+                    <a href="#" class="sidebar-menu-item" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h4>Support</h4>
+                <div class="sidebar-menu">
+                    <a href="#" class="sidebar-menu-item">
+                        <i class="fas fa-headset"></i>
+                        <span>Customer Support</span>
+                    </a>
+                    <a href="#" class="sidebar-menu-item">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Help Center</span>
+                    </a>
+                    <a href="#" class="sidebar-menu-item">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About Us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="closeMobileSidebar()"></div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">

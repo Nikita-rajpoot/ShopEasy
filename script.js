@@ -1922,4 +1922,80 @@ function toggleMobileMenu() {
     if (mobileMenu) {
         mobileMenu.classList.toggle('active');
     }
-} 
+}
+
+// Mobile Sidebar Functions
+function toggleMobileSidebar() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    
+    if (sidebar.classList.contains('open')) {
+        closeMobileSidebar();
+    } else {
+        openMobileSidebar();
+    }
+}
+
+function openMobileSidebar() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    
+    // Load user data in sidebar
+    loadSidebarUserData();
+}
+
+function closeMobileSidebar() {
+    const sidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+function loadSidebarUserData() {
+    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    
+    if (userData) {
+        const avatar = document.getElementById('sidebarUserAvatar');
+        const name = document.getElementById('sidebarUserName');
+        const email = document.getElementById('sidebarUserEmail');
+        
+        if (avatar && userData.avatar) {
+            avatar.src = userData.avatar;
+        }
+        
+        if (name && userData.firstName && userData.lastName) {
+            name.textContent = `${userData.firstName} ${userData.lastName}`;
+        }
+        
+        if (email && userData.email) {
+            email.textContent = userData.email;
+        }
+    }
+}
+
+// Close sidebar when clicking on menu items
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebarMenuItems = document.querySelectorAll('.sidebar-menu-item');
+    
+    sidebarMenuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Close sidebar after a short delay to show the action
+            setTimeout(() => {
+                closeMobileSidebar();
+            }, 300);
+        });
+    });
+    
+    // Close sidebar on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMobileSidebar();
+        }
+    });
+}); 
