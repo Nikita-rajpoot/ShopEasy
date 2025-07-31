@@ -1999,3 +1999,253 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 }); 
+
+// User Page Modal
+function openUserPageModal() {
+    const modal = document.createElement('div');
+    modal.id = 'userPageModal';
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-content user-page-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-user"></i> User Profile</h3>
+                <span class="close" onclick="closeUserPage()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="user-profile-container">
+                    <div class="user-avatar">
+                        <img id="userPageAvatar" src="path/to/default-avatar.jpg" alt="User Avatar">
+                        <input type="file" id="profileAvatar" onchange="previewAvatar(event)">
+                        <div id="avatarPreview"></div>
+                    </div>
+                    <div class="user-details">
+                        <h4 id="userPageName"></h4>
+                        <p id="userPageEmail"></p>
+                        <p id="userPagePhone"></p>
+                        <p id="userPageAddress"></p>
+                        <p id="userPageCity"></p>
+                        <p id="userPageState"></p>
+                        <p id="userPagePincode"></p>
+                        <p id="userPageLandmark"></p>
+                        <p id="userPageInstructions"></p>
+                    </div>
+                    <div class="user-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <div class="stat-info">
+                                <h3 id="totalOrders">0</h3>
+                                <p>Total Orders</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-dollar-sign"></i>
+                            <div class="stat-info">
+                                <h3 id="totalSpent">$0</h3>
+                                <p>Total Spent</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-actions">
+                        <button class="edit-profile-btn" onclick="openUserPageModal()">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>
+                        <button class="logout-btn" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                </div>
+                <div class="user-tabs">
+                    <button class="user-tab active" data-tab="profile" onclick="switchUserTab('profile')">Profile</button>
+                    <button class="user-tab" data-tab="orders" onclick="switchUserTab('orders')">Orders</button>
+                    <button class="user-tab" data-tab="wishlist" onclick="switchUserTab('wishlist')">Wishlist</button>
+                    <button class="user-tab" data-tab="settings" onclick="switchUserTab('settings')">Settings</button>
+                </div>
+                <div class="user-tab-content active" id="profileTab">
+                    <h3>Profile</h3>
+                    <form id="profileForm">
+                        <div class="form-group">
+                            <label for="profileFirstName">First Name</label>
+                            <input type="text" id="profileFirstName" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="profileLastName">Last Name</label>
+                            <input type="text" id="profileLastName" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="profileEmail">Email</label>
+                            <input type="email" id="profileEmail" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="profilePhone">Phone</label>
+                            <input type="tel" id="profilePhone" placeholder="Phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="profileAddress">Address</label>
+                            <textarea id="profileAddress" placeholder="Address"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="profileCity">City</label>
+                            <input type="text" id="profileCity" placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <label for="profileState">State</label>
+                            <select id="profileState">
+                                <option value="">Select State</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                <option value="Ladakh">Ladakh</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                <option value="Daman and Diu">Daman and Diu</option>
+                                <option value="Lakshadweep">Lakshadweep</option>
+                                <option value="Puducherry">Puducherry</option>
+                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="profilePincode">Pincode</label>
+                            <input type="text" id="profilePincode" placeholder="Pincode">
+                        </div>
+                        <div class="form-group">
+                            <label for="profileLandmark">Landmark (Optional)</label>
+                            <textarea id="profileLandmark" placeholder="Landmark (Optional)"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="profileInstructions">Delivery Instructions (Optional)</label>
+                            <textarea id="profileInstructions" placeholder="Delivery Instructions (Optional)"></textarea>
+                        </div>
+                        <button type="submit" class="save-profile-btn">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </form>
+                </div>
+                <div class="user-tab-content" id="ordersTab">
+                    <!-- Orders content will be added here -->
+                </div>
+                <div class="user-tab-content" id="wishlistTab">
+                    <!-- Wishlist content will be added here -->
+                </div>
+                <div class="user-tab-content" id="settingsTab">
+                    <!-- Settings content will be added here -->
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modal);
+}
+
+// Tab switching logic for mobile user modal
+function switchUserTab(tabName) {
+    // Remove active class from all tabs and contents
+    document.querySelectorAll('.user-tab').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.user-tab-content').forEach(content => content.classList.remove('active'));
+
+    // Add active class to selected tab and content
+    document.querySelector(`.user-tab[data-tab="${tabName}"]`).classList.add('active');
+    document.getElementById(tabName + 'Tab').classList.add('active');
+}
+
+// Close user page modal
+function closeUserPage() {
+    const modal = document.getElementById('userPageModal');
+    if (modal) modal.remove();
+    document.body.style.overflow = '';
+}
+
+// Profile avatar preview
+function previewAvatar(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('avatarPreview').innerHTML = `<img src="${e.target.result}" style="width:60px;height:60px;border-radius:50%;">`;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+// Save profile changes
+function saveProfile(event) {
+    event.preventDefault();
+    // Get values
+    const firstName = document.getElementById('profileFirstName').value;
+    const lastName = document.getElementById('profileLastName').value;
+    const email = document.getElementById('profileEmail').value;
+    const phone = document.getElementById('profilePhone').value;
+    let avatar = null;
+    const avatarInput = document.getElementById('profileAvatar');
+    if (avatarInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            avatar = e.target.result;
+            updateUserProfile(firstName, lastName, email, phone, avatar);
+        };
+        reader.readAsDataURL(avatarInput.files[0]);
+    } else {
+        updateUserProfile(firstName, lastName, email, phone, null);
+    }
+}
+
+function updateUserProfile(firstName, lastName, email, phone, avatar) {
+    let userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    userData.firstName = firstName;
+    userData.lastName = lastName;
+    userData.email = email;
+    userData.phone = phone;
+    if (avatar) userData.avatar = avatar;
+    localStorage.setItem('userData', JSON.stringify(userData));
+    showToast('Profile updated successfully!', 'success');
+    closeUserPage();
+}
+
+// Load user data into modal
+function loadUserData() {
+    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    if (!userData) return;
+    // Set avatar, name, email
+    const avatar = document.getElementById('userPageAvatar');
+    const name = document.getElementById('userPageName');
+    const email = document.getElementById('userPageEmail');
+    if (avatar && userData.avatar) avatar.src = userData.avatar;
+    if (name) name.textContent = `${userData.firstName || ''} ${userData.lastName || ''}`;
+    if (email) email.textContent = userData.email || '';
+    // Set profile form values
+    document.getElementById('profileFirstName').value = userData.firstName || '';
+    document.getElementById('profileLastName').value = userData.lastName || '';
+    document.getElementById('profileEmail').value = userData.email || '';
+    document.getElementById('profilePhone').value = userData.phone || '';
+    // Set stats
+    document.getElementById('totalOrders').textContent = userData.totalOrders || 0;
+    document.getElementById('totalSpent').textContent = userData.totalSpent ? `$${userData.totalSpent}` : '$0';
+    // Load other tab data as needed...
+}
+
+// You can call openUserPage() on mobile user icon click 
